@@ -1,0 +1,336 @@
+/* Parallax base styles
+  --------------------------------------------- */
+
+  .parallax {
+    height: 500px; /* fallback for older browsers */
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-perspective: 300px;
+    perspective: 300px;
+  }
+
+  .parallax__group {
+    position: relative;
+    height: 500px; /* fallback for older browsers */
+    height: 100vh;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+  }
+
+  .parallax__group--small {
+    height: 50vh;
+  }
+
+  .parallax__layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .parallax__layer--fore {
+    -webkit-transform: translateZ(90px) scale(.7);
+    transform: translateZ(90px) scale(.7);
+    z-index: 1;
+    
+  }
+
+  .parallax__layer--base {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    z-index: 4;
+  }
+
+  .parallax__layer--back {
+    -webkit-transform: translateZ(-300px) scale(2);
+    transform: translateZ(-300px) scale(2);
+    z-index: 3;
+  }
+
+  .parallax__layer--deep {
+    -webkit-transform: translateZ(-600px) scale(3);
+    transform: translateZ(-600px) scale(3);
+    z-index: 2;
+  }
+
+
+  /* Debugger styles - used to show the effect
+  --------------------------------------------- */
+
+  .debug {
+    position: fixed;
+    top: 0;
+    left: .5em;
+    z-index: 999;
+    background: rgba(0,0,0,.85);
+    color: #fff;
+    padding: .5em;
+    border-radius: 0 0 5px 5px;
+  }
+  .debug-on .parallax__group {
+    -webkit-transform: translate3d(800px, 0, -800px) rotateY(30deg);
+    transform: translate3d(700px, 0, -800px) rotateY(30deg);
+ }
+  .debug-on .parallax__layer {
+    box-shadow: 0 0 0 2px #000;
+    opacity: 0.9;
+  }
+  .parallax__group {
+    -webkit-transition: -webkit-transform 0.5s;
+    transition: transform 0.5s;
+  }
+
+
+  /* parallax interior styles/general
+  --------------------------------------------- */
+
+  body, html {
+    overflow: hidden;
+    min-width: 800px;
+  }
+
+  body {
+    font: 14px "Lucida Grande", "Lucida Sans", "Georgia", sans-serif;
+  }
+
+  * {
+    margin:0;
+    padding:0;
+  }
+
+   /* centre the content in the parallax layers */
+  .section {
+    position: absolute;
+    padding: 10px;
+    left: 50%;
+    top: 50%;
+    width: 62.5%;
+    min-width: 700px;
+    height: 70%;
+    min-height: 800px;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+
+  .section-small {
+    height: 50%;
+    min-height: 300px;
+  }
+
+  .section-boxed {
+    background-color: rgba(255,255,255,0.6);
+  }
+
+  .section-title {
+    font-family: 'Futura', 'Lucida Grande', 'Lucida Sans', 'Georgia', sans-serif;
+    text-align: center;
+    letter-spacing: -2px;
+    font-size: 38px;
+  }
+
+  #outside_parallax img{
+    font: 14px "Lucida Grande", "Lucida Sans", "Georgia", sans-serif;
+    padding: 1em 0 0 1em;
+  }
+
+  .info {
+    font: 18px 'Garamond', 'Lato', sans-serif;
+    text-align: justify;
+    padding: 1em 0em;
+  }
+
+  .left {
+    float: left;
+  }
+
+  .right {
+    float: right;
+  }
+
+  .col2 {
+    width: 50%;
+  }
+
+  .col4 {
+    width: 25%;
+  }
+
+  .img-center {
+    
+  }
+
+  img.scale-2 {
+    min-width: 300px;
+    width: 50%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+
+  img.scale-4 {
+    min-width: 100px;
+    width: 100%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #rightbar img {
+    width: 20px;
+    height: 20px;
+    left: -800px;
+  }
+
+  #rightbar input[type="text"] {
+    padding: 5px 8px;
+    font-family: 'Lato', 'Lucida Grande', sans-serif;
+    box-shadow: none;
+    appearance: none;
+    border-radius: none;
+    margin: 0px;
+    border: solid 1px #aaaaaa;
+  }
+
+  #rightbar input[type="text"]:focus {
+    outline: none;
+  }
+  /* style the groups
+  --------------------------------------------- */
+  #group1 {
+    z-index: 5; /* slide over group 2 */
+  }
+  #group1 .parallax__layer--base {
+    color: #000;
+  }
+  #group1 .parallax__layer--back {
+    background: url("../images/pier.jpg") center;
+    background-size: cover;
+  }
+
+  #group2 {
+    z-index: 4; /* slide under groups 1 and 3 */  
+  }
+  #group2 .parallax__layer--back {
+    background: url("http://photos.ucdavis.edu/image_dir/album190002/md_20111015_cheer_2272.jpg?1398195543?1398195543") center;
+    /*background-size: cover;*/
+  }
+
+  #group3 {
+    z-index: 4; /* slide over group 2 and 4 */
+    background: url("http://photos.ucdavis.edu/image_dir/album190002/md_20120311_Sara_Petrosillo.jpg?1365616666?1365616666") center;
+    background-size:cover;
+  }
+  #group3 .parallax__layer--base {
+    background: #7F93AE;
+  }
+
+  #group4 {
+    z-index: 2; /* slide under group 3 and 5 */
+    background: url("http://photos.ucdavis.edu/image_dir/album190002/md_20120504_chancellor_assistant_2807_1.jpg?1398195269?1398195269") center;
+    background-size:cover;
+  }
+  #group4 .parallax__layer--deep {
+    background: #7F93AE;
+  }
+
+  #group5 {
+    z-index: 3; /* slide over group 4 and 6 */
+    background: url("http://photos.ucdavis.edu/image_dir/album190002/md_20111011_openhouse_178.tif.jpg?1398198772?1398198772") center;
+    background-size:cover;
+  }
+  #group5 .parallax__layer--base {
+    background: #7F93AE;
+  }
+
+  #group6 {
+    z-index: 2; /* slide under group 5 and 7 */
+    background: url("http://photos.ucdavis.edu/image_dir/album190002/md_20111011_openhouse_178.tif.jpg?1398198772?1398198772") center;
+    background-size:cover;
+  }
+  #group6 .parallax__layer--back {
+    background: #7F93AE;
+  }
+
+  #group7 {
+    z-index: 3; /* slide over group 7 */
+    background: url("../images/pier.jpg") center;
+    background-size:cover;
+  }
+  #group7 .parallax__layer--base {
+    background: #7F93AE;
+  }
+
+
+  /* misc
+  --------------------------------------------- */
+  .demo__info {
+    background: #fff;
+    position: absolute;
+    z-index: 100;
+    bottom: 0;
+    /*bottom: 1vh;*/
+    top: auto;
+    font-size: 80%;
+    text-align:center;
+    width: 100%;
+  }
+
+  #clear { 
+    /*clears navbar area */
+    clear: both;
+  }
+
+  #navbar {
+    background: #4d688c;
+    margin: 0px auto;
+    list-style: none;
+    border-bottom: 2px solid gold;
+    text-align: center;
+  }
+
+  #navbar ul {
+  	font: 14pt 'Lato', sans-serif;
+    overflow: hidden;
+  }
+
+  #navbar li { 
+    display: inline;
+  }
+
+  #navbar a {
+    text-decoration: none;
+    margin-right: -4px;
+    display: inline-block;
+    padding: 10px 15px 10px 15px;
+    border-left: 1px solid #dbe0e8;
+  }
+
+  #logo {
+    float: left;
+  }
+
+  #rightbar {
+    float: right;
+    font-size: 14px;
+  }
+
+  /* link */
+  #navbar a:link,a:visited {
+    color: #fff;
+    background: #4d688c;
+  }
+
+  /* mouse over link */
+  #navbar a:hover {
+    color: #fff;
+    background: #8295ae;
+  }
+
+  /* selected link */
+  #navbar a:active {
+    color: #fff;
+    background: #8295ae;
+  }
