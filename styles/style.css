@@ -26,6 +26,14 @@
     transform-style: preserve-3d;
   }
 
+  .parallax__group--small_alt {
+    position: relative;
+    height: 400px; /* fallback for older browsers */
+    height: 66.6667vh;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+  }
+
   .parallax__layer {
     position: absolute;
     top: 0;
@@ -112,10 +120,10 @@
     top: 50%;
     width: 62.5%;
     min-width: 700px;
-    height: 70%;
-    min-height: 800px;
+    max-height: 100%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+    vertical-align: middle;
   }
 
   .section-small {
@@ -125,7 +133,20 @@
     top: 50%;
     width: 62.5%;
     min-width: 700px;
-    height: 50%;
+    max-height: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    vertical-align: middle;
+  }
+
+  .section-small_alt {
+    position: absolute;
+    padding: 10px;
+    left: 50%;
+    top: 50%;
+    width: 62.5%;
+    min-width: 700px;
+    height: 70%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
   }
@@ -170,6 +191,11 @@
     float: right;
   }
 
+  .col1 {
+    margin: 0px auto; /* centers */
+    width: 45%;
+  }
+
   .col2 {
     width: 50%;
   }
@@ -180,6 +206,12 @@
 
   .img-center {
     
+  }
+
+  img.scale-1 {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
   }
 
   img.scale-2 {
@@ -222,45 +254,53 @@
   /* style the groups
   --------------------------------------------- */
   #group1 {
-    z-index: -1; /* slide over group 2 */
+    z-index: -1;
   }
   #group1 .parallax__layer--base {
     color: #000;
   }
-  #group1 .parallax__layer--deep {
+  #group1 .parallax__layer--back {
     height: 100vh;
     background: url("../images/pier.jpg") center;
     background-size: cover;
   }
 
   #group2 {
-    z-index: 4; /* slide under groups 1 and 3 */
+    z-index: 10;
   }
   #group2 .parallax__layer--base{
     background: #fff;
   }
-  #group2 .parallax__layer--back {
+  /*#group2 .parallax__layer--back {
     background: #fff;
-    /*background: url("http://photos.ucdavis.edu/image_dir/album190002/md_20111015_cheer_2272.jpg?1398195543?1398195543") center;*/
+    background: url("http://photos.ucdavis.edu/image_dir/album190002/md_20111015_cheer_2272.jpg?1398195543?1398195543") center;
     background-size: cover;
-  }
+  }*/
 
   #group3 {
-    z-index: 4; /* slide over group 2 and 4 */
-    background: url("http://photos.ucdavis.edu/image_dir/album190002/md_20120311_Sara_Petrosillo.jpg?1365616666?1365616666") center;
-    background-size:cover;
+    z-index: 6; /* slide over group 2 and 4 */
   }
   #group3 .parallax__layer--base {
-    background: #7F93AE;
+    background: none;
+  }
+  #group3 .parallax__layer--back {
+    background: url("http://photos.ucdavis.edu/image_dir/album190002/md_20111015_cheer_2272.jpg?1398195543?1398195543") center;
+    background-size: cover;
+    height: 100vh;
+    z-index: -700;
   }
 
   #group4 {
-    z-index: 2; /* slide under group 3 and 5 */
+    z-index: 5; /* slide under group 3 and 5 */
+  }
+  #group4 .parallax__layer--base {
+    background: #fff;
+  }
+  #group4 .parallax__layer--back {
     background: url("http://photos.ucdavis.edu/image_dir/album190002/md_20120504_chancellor_assistant_2807_1.jpg?1398195269?1398195269") center;
     background-size:cover;
-  }
-  #group4 .parallax__layer--deep {
-    background: #7F93AE;
+    height: 100vh;
+    z-index: -800;
   }
 
   #group5 {
