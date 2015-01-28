@@ -19,7 +19,11 @@
   }
 
   .parallax__group--small {
+    position: relative;
+    height: 350px; /* fallback for older browsers */
     height: 50vh;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
   }
 
   .parallax__layer {
@@ -115,8 +119,15 @@
   }
 
   .section-small {
+    position: absolute;
+    padding: 10px;
+    left: 50%;
+    top: 50%;
+    width: 62.5%;
+    min-width: 700px;
     height: 50%;
-    min-height: 300px;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
   }
 
   .section-boxed {
@@ -130,9 +141,19 @@
     font-size: 38px;
   }
 
+  #outside_parallax {
+    background: #fff;
+  }
+
   #outside_parallax img{
     font: 14px "Lucida Grande", "Lucida Sans", "Georgia", sans-serif;
     padding: 1em 0 0 1em;
+  }
+
+  .center {
+    font: 18px 'Garamond', 'Lato', sans-serif;
+    text-align: center;
+    padding: 1em 0em;
   }
 
   .info {
@@ -196,26 +217,32 @@
 
   #rightbar input[type="text"]:focus {
     outline: none;
+    border: solid 1px #222;
   }
   /* style the groups
   --------------------------------------------- */
   #group1 {
-    z-index: 5; /* slide over group 2 */
+    z-index: -1; /* slide over group 2 */
   }
   #group1 .parallax__layer--base {
     color: #000;
   }
-  #group1 .parallax__layer--back {
+  #group1 .parallax__layer--deep {
+    height: 100vh;
     background: url("../images/pier.jpg") center;
     background-size: cover;
   }
 
   #group2 {
-    z-index: 4; /* slide under groups 1 and 3 */  
+    z-index: 4; /* slide under groups 1 and 3 */
+  }
+  #group2 .parallax__layer--base{
+    background: #fff;
   }
   #group2 .parallax__layer--back {
-    background: url("http://photos.ucdavis.edu/image_dir/album190002/md_20111015_cheer_2272.jpg?1398195543?1398195543") center;
-    /*background-size: cover;*/
+    background: #fff;
+    /*background: url("http://photos.ucdavis.edu/image_dir/album190002/md_20111015_cheer_2272.jpg?1398195543?1398195543") center;*/
+    background-size: cover;
   }
 
   #group3 {
