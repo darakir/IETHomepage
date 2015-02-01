@@ -283,17 +283,18 @@
   #group3 .parallax__layer--base {
     background: none;
   }
-  #group3 .parallax__layer--back {
+  #group3 .parallax__layer--deep {
     background: url("http://photos.ucdavis.edu/image_dir/album190002/md_20111015_cheer_2272.jpg?1398195543?1398195543") center;
     background-size: cover;
     height: 100vh;
-    z-index: -700;
+    z-index: 4;
   }
 
   #group4 {
     z-index: 5; /* slide under group 3 and 5 */
   }
   #group4 .parallax__layer--base {
+	z-index: 5;
     background: #fff;
   }
   #group4 .parallax__layer--back {
@@ -304,7 +305,7 @@
   }
 
   #group5 {
-    z-index: 3; /* slide over group 4 and 6 */
+    z-index: -2; /* slide over group 4 and 6 */
     background: url("http://photos.ucdavis.edu/image_dir/album190002/md_20111011_openhouse_178.tif.jpg?1398198772?1398198772") center;
     background-size:cover;
   }
